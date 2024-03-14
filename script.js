@@ -37,11 +37,15 @@ function generarEstrellas() {
 generarEstrellas();
 
 // Código para las flores
-document.addEventListener('mousemove', function(e) {
+function handleMouseMove(e) {
   const flor = document.createElement('div');
   flor.classList.add('flor');
-  flor.style.left = e.clientX - 25 + 'px';
-  flor.style.top = e.clientY - 25 + 'px';
+
+  const clientX = e.clientX || e.touches[0].clientX;
+  const clientY = e.clientY || e.touches[0].clientY;
+
+  flor.style.left = clientX - 25 + 'px';
+  flor.style.top = clientY - 25 + 'px';
   document.body.appendChild(flor);
 
   const colors = ['#ff69b4', '#ffa07a', '#ffff00', '#00ff00', '#00ffff', '#0000ff', '#ee82ee'];
@@ -62,4 +66,10 @@ document.addEventListener('mousemove', function(e) {
       flor.remove();
     }, 50);
   }, 500);
+}
+
+document.addEventListener('mousemove', handleMouseMove);
+document.addEventListener('touchmove', function(e) {
+  e.preventDefault(); // Evita el desplazamiento de la página al tocar
+  handleMouseMove(e);
 });
