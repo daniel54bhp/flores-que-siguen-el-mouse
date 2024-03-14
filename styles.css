@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  overflow: hidden;
+}
+
+.flor {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  opacity: 0.8;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.petalo {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.estrella {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: yellow;
+  border-radius: 50%;
+  opacity: 0;
+  animation: parpadeo 3s infinite;
+}
+
+.estrella-fugaz {
+  position: absolute;
+  width: 100px;
+  height: 5px;
+  background: linear-gradient(to right, rgba(255, 255, 0, 1), rgba(255, 255, 0, 0));
+  transform: rotate(-45deg);
+  animation: estrella-fugaz 5s infinite;
+}
+
+.mensaje {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: yellow;
+  font-size: 24px;
+  font-family: Arial, sans-serif;
+  opacity: 0;
+  animation: mostrar-mensaje 10s infinite;
+}
+
+@keyframes parpadeo {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes estrella-fugaz {
+  0% {
+    transform: translate(-100vw, -50vh) rotate(-45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100vw, -50vh) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes mostrar-mensaje {
+  0%, 80% {
+    opacity: 0;
+  }
+  20%, 60% {
+    opacity: 1;
+  }
+}
